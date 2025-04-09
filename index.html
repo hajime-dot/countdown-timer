@@ -18,42 +18,47 @@
         #countdown {
             text-align: center;
             background: rgba(255, 255, 255, 0.95);
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            padding: 20px; /* Reduced padding for smaller screens */
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
             animation: fadeIn 1s ease-in-out;
+            width: 90%; /* Ensures it fits within iPhone width */
+            max-width: 400px; /* Limits width for larger screens */
+            box-sizing: border-box;
         }
         h1 {
-            font-size: 2.5em;
+            font-size: 1.8em; /* Slightly smaller for mobile */
             color: #1e3c72;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
+            line-height: 1.2; /* Better readability */
         }
         .time-container {
             display: flex;
+            flex-wrap: wrap; /* Allows wrapping on very small screens */
             justify-content: center;
-            gap: 20px;
+            gap: 10px; /* Reduced gap for compactness */
         }
         .time-unit {
             background: #2a5298;
             color: white;
-            padding: 20px;
-            border-radius: 15px;
-            min-width: 100px;
+            padding: 15px; /* Smaller padding */
+            border-radius: 10px;
+            min-width: 70px; /* Adjusted for iPhone screen */
             transition: transform 0.3s ease, background 0.3s ease;
         }
         .time-unit:hover {
-            transform: scale(1.1);
+            transform: scale(1.05); /* Slightly smaller scale for mobile */
             background: #1e3c72;
         }
         .time-unit span {
             display: block;
-            font-size: 2.5em;
+            font-size: 2em; /* Adjusted for readability */
             font-weight: bold;
         }
         .time-unit label {
-            font-size: 1em;
+            font-size: 0.9em; /* Slightly smaller labels */
             text-transform: uppercase;
             opacity: 0.9;
         }
@@ -62,11 +67,16 @@
             from { opacity: 0; transform: translateY(-20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        /* Responsive design */
-        @media (max-width: 600px) {
-            h1 { font-size: 1.8em; }
-            .time-unit { padding: 15px; min-width: 80px; }
-            .time-unit span { font-size: 2em; }
+        /* Media query for iPhone-sized screens */
+        @media (max-width: 400px) {
+            h1 { font-size: 1.5em; }
+            .time-unit { 
+                padding: 10px; 
+                min-width: 60px; 
+            }
+            .time-unit span { font-size: 1.8em; }
+            .time-unit label { font-size: 0.8em; }
+            .time-container { gap: 8px; }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
