@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown to April 20, 2025</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            overflow: hidden;
+        }
+        #countdown {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease-in-out;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #1e3c72;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .time-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .time-unit {
+            background: #2a5298;
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            min-width: 100px;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+        .time-unit:hover {
+            transform: scale(1.1);
+            background: #1e3c72;
+        }
+        .time-unit span {
+            display: block;
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+        .time-unit label {
+            font-size: 1em;
+            text-transform: uppercase;
+            opacity: 0.9;
+        }
+        /* Animation for fade-in effect */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Responsive design */
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8em; }
+            .time-unit { padding: 15px; min-width: 80px; }
+            .time-unit span { font-size: 2em; }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="countdown">
+        <h1>華泰旅行團 April 20, 2025, 8:00 AM HKT</h1>
+        <div class="time-container">
+            <div class="time-unit"><span id="days">0</span><label>Days</label></div>
+            <div class="time-unit"><span id="hours">0</span><label>Hours</label></div>
+            <div class="time-unit"><span id="minutes">0</span><label>Minutes</label></div>
+            <div class="time-unit"><span id="seconds">0</span><label>Seconds</label></div>
+        </div>
+    </div>
+
+    <script>
+        // Target date: April 20, 2025, 08:00 AM HKT (UTC+8)
+        const targetDate = new Date("2025-04-20T08:00:00+08:00").getTime();
+
+        // Update countdown every second
+        const countdown = setInterval(() => {
+            const now = new Date().getTime();
+            const timeLeft = targetDate - now;
+
+            // Calculate days, hours, minutes, and seconds
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            // Display the result
+            document.getElementById("days").innerText = days;
+            document.getElementById("hours").innerText = hours;
+            document.getElementById("minutes").innerText = minutes;
+            document.getElementById("seconds").innerText = seconds;
+
+            // If the countdown is over, stop and display a message
+            if (timeLeft < 0) {
+                clearInterval(countdown);
+                document.getElementById("countdown").innerHTML = "<h1>Countdown Complete!</h1>";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
